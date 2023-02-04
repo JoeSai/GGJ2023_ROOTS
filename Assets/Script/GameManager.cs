@@ -5,6 +5,17 @@ using System.Security.Cryptography;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
+
+public enum SleepState
+{
+    Normal,
+    Hangover,
+    StayUpLate,
+    SleepEarly,
+    Happy,
+}
+
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
@@ -32,17 +43,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private SleepState sleepState = SleepState.Normal;
+
+    public void SetSleepState(SleepState state)
+    {
+        sleepState = state;
+    }
+
+    public SleepState GetSleepState()
+    {
+        return sleepState;
+    }
 
     int shopScore;
     int bwCount;
     int sfjCount;
     int mnCount;
     int fnxCount;
-    //string LevelScore = "LevelScore";
-    string Item_Bawang = "Bawang";
-    string Item_Shengfaji = "Tianlingling";
-    string Item_Minuo = "Minuo";
-    string Item_Feinaxiong = "feinanxiong";
+
 
     int levelScore = 0;
 

@@ -109,6 +109,62 @@ public class LevelManager : MonoBehaviour
         /*InitMsgList*/
     }
 
+    private void Start()
+    {
+        HandleSleepState();
+    }
+
+    private void HandleSleepState()
+    {
+        SleepState sleepState = GameManager.GetInstance.GetSleepState();
+        List<Follicle> hideList = new List<Follicle>();
+        switch (sleepState)
+        {
+            case SleepState.Normal:
+                break;
+            case SleepState.Hangover:
+                for (int i = 0; i < follicleList.Count; i++)
+                {
+                    if(i % 2 == 0)
+                    {
+                        hideList.Add(follicleList[i]);
+                    }
+                }
+
+                StartCoroutine(HideFollicle(hideList));
+                break;
+            case SleepState.StayUpLate:
+   
+                for (int i = 0; i < follicleList.Count; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        hideList.Add(follicleList[i]);
+                    }
+                }
+
+                StartCoroutine(HideFollicle(hideList));
+                break;
+            case SleepState.SleepEarly:
+                excitationRate += 1;
+                break;
+            case SleepState.Happy:
+                excitationRate += 1;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private IEnumerator HideFollicle(List<Follicle> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            list[i].gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
     private void InitCfg()
     {
         rotationalSpeed = levelCfg.rotationalSpeed;
@@ -335,9 +391,26 @@ public class LevelManager : MonoBehaviour
         return selectedElements;
     }
 
-    public void LoadNextLevel(string sceneName)
+
+    public void Hangover()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.GetInstance.SetSleepState(SleepState.Hangover);
+    }
+    public void StayUpLate()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.GetInstance.SetSleepState(SleepState.StayUpLate);
+    }
+    public void SleepEarly()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.GetInstance.SetSleepState(SleepState.SleepEarly);
+    }
+    public void Happy()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameManager.GetInstance.SetSleepState(SleepState.Happy);
     }
 
 }
