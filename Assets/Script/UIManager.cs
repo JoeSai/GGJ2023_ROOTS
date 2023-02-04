@@ -24,6 +24,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private Text timeText;
 
+    [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject eventPanel;
+    [SerializeField] private GameObject follicles;
+
+    private float timer = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +41,23 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        int timer1 = (int)timer;
+        timeText.text = timer1.ToString();
+        timer -= Time.deltaTime;
+
+        if(timer <= 0)
+        {
+            timer = 0;
+            follicles.SetActive(false);
+            shopPanel.SetActive(true);
+        }
+
+        scoreText.text = GameManager.GetInstance.GetLevelScore().ToString();
+
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    GameManager.GetInstance.SetLevelScore(GameManager.GetInstance.GetLevelScore() + 1);
+        //}
     }
 
     // Î¢ÐÅµ¯¿ò

@@ -71,7 +71,11 @@ public class Follicle : MonoBehaviour
                     image.color = Color.red;
 
                     Hair oneHair = Instantiate(hairPrefab, transform);
-                    oneHair.transform.localPosition = new Vector3(0, 0, 0);
+                    int radomX = Random.Range(-20, 20);
+                    int radomY = Random.Range(-5, 5);
+
+                    oneHair.transform.localPosition = new Vector3(radomX, radomY, 0);
+                    GameManager.GetInstance.SetLevelScore(GameManager.GetInstance.GetLevelScore() + 1);
 
                     if (this.isLeft)
                     {

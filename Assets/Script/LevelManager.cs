@@ -202,6 +202,7 @@ public class LevelManager : MonoBehaviour
                 {
                     leftHairList.Remove(hair);
                     hair.SetHairDown();
+                    GameManager.GetInstance.SetLevelScore(GameManager.GetInstance.GetLevelScore() - 1);
                 }
                 uimanager.PerformLeftHandAnim();
                 break;
@@ -212,6 +213,7 @@ public class LevelManager : MonoBehaviour
                 {
                     rightHairList.Remove(hair);
                     hair.SetHairDown();
+                    GameManager.GetInstance.SetLevelScore(GameManager.GetInstance.GetLevelScore() - 1);
                 }
                 //print("r tuofa");
                 uimanager.PerformRightHandAnim();

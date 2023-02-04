@@ -13,20 +13,32 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if(instance == null)
+            //if(instance == null)
+            //{
+            //    instance = Activator.CreateInstance<GameManager>();
+            //}
+            if (instance == null)
             {
-                instance = Activator.CreateInstance<GameManager>();
+                instance = FindObjectOfType<GameManager>();
+                if (instance == null)
+                {
+                    GameObject go = new GameObject();
+                    go.name = "GameManager";
+                    instance = go.AddComponent<GameManager>();
+                }
             }
             return instance;
         }
     }
 
     string ShopScore = "ShopScore";
-    string LevelScore = "LevelScore";
+    //string LevelScore = "LevelScore";
     string Item_Bawang = "Bawang";
     string Item_Shengfaji = "Tianlingling";
     string Item_Minuo = "Minuo";
     string Item_Feinaxiong = "feinanxiong";
+
+    int levelScore = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -62,20 +74,19 @@ public class GameManager : MonoBehaviour
     // 拿到关卡得分
     public int GetLevelScore()
     {
-        int ret = PlayerPrefs.GetInt(LevelScore, 0);
-        return ret;
+        return levelScore;
+        //int ret = PlayerPrefs.GetInt(LevelScore, 0);
+        //return ret;
     }
     // 写入关卡积分
     public void SetLevelScore(int levelScore)
     {
-        if (PlayerPrefs.HasKey(LevelScore))
+        this.levelScore = levelScore;
+        if(this.levelScore < 0)
         {
-            PlayerPrefs.SetInt(LevelScore, levelScore);
+            this.levelScore = 0;
         }
-        else
-        {
-            Debug.Log(LevelScore + "数据不存在");
-        }
+
     }
 
     // 拿到霸王的数量
