@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] UIManager uimanager;
 
     [SerializeField] private LevelCfg levelCfg;
+    [SerializeField] private MsgCfg msgCfg;
     //[SerializeField] private LevelCfg levelCfg2;
 
     [SerializeField] RootsController rootsController;
@@ -20,6 +21,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float excitationDuration; //Ã«ÄÒ¼¤»îÊ±¼ä
 
     [SerializeField] private Transform follicleParent;
+
+    private float excitationInterval = 1f;
+    private float excitationTimer = 0f;
 
     private void Awake()
     {
@@ -53,12 +57,22 @@ public class LevelManager : MonoBehaviour
 
     private void ActiveFollicle()
     {
-        var selectedObjects = follicleList
-                    .Where(follicle => follicle.GetState() == FollicleState.Live)
-                    .Take(excitationRate)
-                    .ToList();
+        if(excitationTimer > excitationInterval)
+        {
+            var selectedObjects = follicleList
+            .Where(follicle => follicle.GetState() == FollicleState.Live)
+            .Take(excitationRate)
+            .ToList();
 
-        print(selectedObjects);
+
+            foreach (var follicle in selectedObjects)
+            {
+                follicle.SetActive();
+            }
+
+            excitationTimer = 0f;
+        }
+        excitationTimer += Time.deltaTime;
     }
 }
 

@@ -1743,6 +1743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uimanager: {fileID: 1393273026}
   levelCfg: {fileID: 11400000, guid: 436110af031372f449c489b40bcebaa1, type: 2}
+  msgCfg: {fileID: 11400000, guid: 456dfb12c318b6b46b993a2f97895045, type: 2}
   rootsController: {fileID: 1378435396}
   follicleList: []
   rotationalSpeed: 0
