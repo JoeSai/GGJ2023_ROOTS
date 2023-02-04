@@ -22,11 +22,12 @@ public class MsgCfg : ScriptableObject
 
     public MsgData bossMsgData;
     public MsgData artserMsgData;
+    public MsgData artserMsgData2;
     public MsgData designerMsgData;
 
     public MsgParam GetRandomMsg()
     {
-        float totalProbability = bossMsgData.probability + artserMsgData.probability + designerMsgData.probability;
+        float totalProbability = bossMsgData.probability + artserMsgData.probability + artserMsgData2.probability + + designerMsgData.probability;
         float randomValue = Random.Range(0, totalProbability);
 
         int t;
@@ -36,9 +37,14 @@ public class MsgCfg : ScriptableObject
             tempMsgList = bossMsgData.msgList;
             t = bossMsgData.buffType;
         }
-        else if(randomValue <= bossMsgData.probability + artserMsgData.probability){
+        else if (randomValue <= bossMsgData.probability + artserMsgData.probability)
+        {
             tempMsgList = artserMsgData.msgList;
             t = artserMsgData.buffType;
+        }
+        else if (randomValue <= bossMsgData.probability + artserMsgData.probability + artserMsgData2.probability) {
+            tempMsgList = artserMsgData2.msgList;
+            t = artserMsgData2.buffType;
         }
         else
         {

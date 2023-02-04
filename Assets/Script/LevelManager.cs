@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
@@ -32,7 +33,9 @@ public class LevelManager : MonoBehaviour
 
     private float triggerMsgTimer;
 
-    [SerializeField] private Transform follicleParent;
+    [SerializeField] private Transform follicleLeftParent;
+    [SerializeField] private Transform follicleRightParent;
+    [SerializeField] private Transform follicleCenterParent;
 
     private float excitationInterval = 1f; // Ã«ÄÒ¼¤»î¼ä¸ô
     private float excitationTimer = 0f;
@@ -59,11 +62,35 @@ public class LevelManager : MonoBehaviour
     {
         follicleList = new List<Follicle>();
 
-        foreach (var follicle in follicleParent.GetComponentsInChildren<Follicle>())
+        foreach (var follicle in follicleLeftParent.GetComponentsInChildren<Follicle>())
         {
             follicleList.Add(follicle);
 
-            follicle.Init(excitationDuration);
+            follicle.Init(excitationDuration, true);
+        }
+
+        foreach (var follicle in follicleRightParent.GetComponentsInChildren<Follicle>())
+        {
+            follicleList.Add(follicle);
+
+            follicle.Init(excitationDuration, false);
+        }
+
+        foreach (var follicle in follicleCenterParent.GetComponentsInChildren<Follicle>())
+        {
+            follicleList.Add(follicle);
+
+            int radomNum = Random.Range(0, 2);
+
+            if(radomNum == 0)
+            {
+                follicle.Init(excitationDuration, false);
+            }
+            else
+            {
+                follicle.Init(excitationDuration, true);
+            }
+        
         }
     }
 
@@ -167,7 +194,14 @@ public class LevelManager : MonoBehaviour
             case BuffType.RandomAlopecia:
                 break;
 
-            case BuffType.RegionalAlopecia:
+            case BuffType.L_RegionalAlopecia:
+                //print("l tuofa");
+                uimanager.PerformLeftHandAnim();
+                break;
+
+            case BuffType.R_RegionalAlopecia:
+                //print("r tuofa");
+                uimanager.PerformRightHandAnim();
                 break;
 
         }

@@ -20,16 +20,16 @@ MonoBehaviour:
     duration: 5
   - bufferName: "\u7F8E\u672Fgank"
     buffTpye: 1
-    count: 0
+    count: 2
     arena: 0
+    duration: 0
+  - bufferName: "\u7F8E\u672Fgank"
+    buffTpye: 2
+    count: 2
+    arena: 1
     duration: 0
   - bufferName: "\u8001\u677Fgank"
-    buffTpye: 2
-    count: 0
-    arena: 0
-    duration: 0
-  - bufferName: 
     buffTpye: 0
-    count: 0
+    count: 2
     arena: 0
     duration: 0

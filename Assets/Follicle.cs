@@ -20,6 +20,7 @@ public class Follicle : MonoBehaviour
     private float activedDuration;
     private float obstructedDuration;
     private float timer = 0;
+    private bool isLeft;
 
     [SerializeField] private Hair hairPrefab;
 
@@ -35,9 +36,10 @@ public class Follicle : MonoBehaviour
         SetState(FollicleState.Live);
     }
 
-    public void Init(float activedDuration)
+    public void Init(float activedDuration, bool isLeft)
     {
         this.activedDuration = activedDuration;
+        this.isLeft = isLeft;
     }
 
     public void SetObstructedDuration(float obstructedDuration)
@@ -69,6 +71,8 @@ public class Follicle : MonoBehaviour
                     image.color = Color.red;
 
                     Hair oneHair = Instantiate(hairPrefab, transform);
+                    oneHair.transform.localPosition = new Vector3(0, 80, 0);
+                    oneHair.transform.localScale = new Vector3(this.isLeft ? 1 : -1, 1, 1);
                     LevelManager.hairList.Add(oneHair);
                 }
                 break;

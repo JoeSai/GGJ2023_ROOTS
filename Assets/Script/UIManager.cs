@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
 
     float DelayClose_WeChat = 2.5f;
 
+    [SerializeField] private Animation leftHandAnim;
+    [SerializeField] private Animation rightHandAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,5 +103,15 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(DelayClose_WeChat);
 
         Destroy(obj);
+    }
+
+    public void PerformLeftHandAnim()
+    {
+        leftHandAnim.Play();
+    }
+
+    public void PerformRightHandAnim()
+    {
+        rightHandAnim.Play();
     }
 }

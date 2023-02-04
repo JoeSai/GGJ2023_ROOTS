@@ -15,15 +15,20 @@ MonoBehaviour:
   bossMsgData:
     msgList:
     - boss
-    probability: 70
+    probability: 40
     buffType: 0
   artserMsgData:
     msgList:
     - art
     probability: 15
     buffType: 1
+  artserMsgData2:
+    msgList:
+    - 
+    probability: 15
+    buffType: 2
   designerMsgData:
     msgList:
     - designer
-    probability: 15
-    buffType: 2
+    probability: 30
+    buffType: 3

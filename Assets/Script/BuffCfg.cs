@@ -15,8 +15,9 @@ public struct BuffEvent
 public enum BuffType
 {
     FollicleObstructed,
-    RegionalAlopecia,
-    RandomAlopecia
+    L_RegionalAlopecia,
+    R_RegionalAlopecia,
+    RandomAlopecia,
 }
 
 [CreateAssetMenu(fileName = "New BuffCfg", menuName = "ScriptableObjects/BuffCfg", order = 1)]
