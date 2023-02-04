@@ -50,7 +50,7 @@ public class MsgCfg : ScriptableObject
 
         MsgParam param;
 
-        param.type = randomIndex;
+        param.type = t;
         param.text = tempMsgList[randomIndex];
 
         return param;

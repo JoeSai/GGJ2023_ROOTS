@@ -6,8 +6,9 @@ using UnityEngine;
 public class LevelCfg : ScriptableObject
 {
     public float rotationalSpeed;
-    public int excitationRate;
-    public float excitationDuration;
+    public int excitationRate;  //每秒几个
+    public float excitationDuration;  //激活持续时间
+    public float raySpeed; 
 
     public float triggerMsgInterval;
 }

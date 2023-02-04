@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public static List<Hair> hairList = new List<Hair>();
+    [SerializeField] List<Follicle> follicleList;
+
+
     [SerializeField] UIManager uimanager;
 
     [SerializeField] private LevelCfg levelCfg;
@@ -15,7 +19,7 @@ public class LevelManager : MonoBehaviour
     //[SerializeField] private LevelCfg levelCfg2;
 
     [SerializeField] RootsController rootsController;
-    [SerializeField] List<Follicle> follicleList;  
+
 
     [SerializeField] private float rotationalSpeed; //转动速度
     [SerializeField] private float raySpeed; //射线速度
@@ -48,6 +52,7 @@ public class LevelManager : MonoBehaviour
         excitationRate = levelCfg.excitationRate;
         excitationDuration = levelCfg.excitationDuration;
         triggerMsgInterval = levelCfg.triggerMsgInterval;
+        raySpeed = levelCfg.raySpeed;
     }
 
     private void InitFollicleList()
@@ -87,7 +92,9 @@ public class LevelManager : MonoBehaviour
 
             BuffEvent buffEvent = buffCfg.events[buffType];
 
+            HandleMsgByType(buffType, msgString);
             HandleBuffer(buffEvent);
+
 
             //print(param.type);
             //print(param.text);
@@ -126,9 +133,35 @@ public class LevelManager : MonoBehaviour
         excitationTimer += Time.deltaTime;
     }
     private void HandleBuffer(BuffEvent e){
+        int count = e.count;
+        int duration = e.duration;
         switch (e.buffTpye)
         {
+    
             case BuffType.FollicleObstructed:
+                List<Follicle> selectedList = new List<Follicle>();
+
+                var deadFollicles = follicleList
+                .Where(follicle => follicle.GetState() != FollicleState.Obstructed)
+                .ToList();
+
+
+                System.Random random = new System.Random();
+                int selectCount = 0;
+                while (selectCount < count && deadFollicles.Count > 0)
+                {
+                    int index = random.Next(deadFollicles.Count);
+                    selectedList.Add(deadFollicles[index]);
+                    deadFollicles.RemoveAt(index);
+                    selectCount++;
+                }
+
+                foreach (var follicle in selectedList)
+                {
+                    follicle.SetObstructedDuration(duration);
+                    follicle.SetState(FollicleState.Obstructed);
+                }
+
                 break;
 
             case BuffType.RandomAlopecia:
@@ -137,6 +170,22 @@ public class LevelManager : MonoBehaviour
             case BuffType.RegionalAlopecia:
                 break;
 
+        }
+    }
+
+    private void HandleMsgByType(int type, string msgString)
+    {
+        switch (type)
+        {
+            case 0:
+                uimanager.PushWeChat(msgString);
+                break;
+            case 1:
+                uimanager.PushDialogueLeft(msgString);
+                break;
+            case 2:
+                uimanager.PushDialogueRight(msgString);
+                break;
         }
     }
 

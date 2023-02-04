@@ -21,6 +21,7 @@ public class Follicle : MonoBehaviour
     private float obstructedDuration;
     private float timer = 0;
 
+    [SerializeField] private Hair hairPrefab;
 
     private FollicleState state;
     private void Awake()
@@ -66,6 +67,9 @@ public class Follicle : MonoBehaviour
                 {
                     this.state = FollicleState.Actived;
                     image.color = Color.red;
+
+                    Hair oneHair = Instantiate(hairPrefab, transform);
+                    LevelManager.hairList.Add(oneHair);
                 }
                 break;
             default:

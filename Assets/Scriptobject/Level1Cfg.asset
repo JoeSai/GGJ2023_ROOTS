@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationalSpeed: 2
   excitationRate: 2
-  excitationDuration: 2
-  triggerMsgInterval: 10
+  excitationDuration: 5
+  raySpeed: 5
+  triggerMsgInterval: 2

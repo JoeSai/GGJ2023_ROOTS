@@ -67,9 +67,12 @@ public class RootsController : MonoBehaviour
             RaycastHit2D raycastHit2D = Physics2D.Linecast(startPosition, endPosition, hitLayerMask);
             Transform hitTr = raycastHit2D.transform;
 
+
             if (hitTr)
             {
-                endPosition = hitTr.position;
+                Vector3 hitPosition = raycastHit2D.point;
+                //endPosition = hitTr.position;
+                endPosition = hitPosition;
                 endPosition.z = 0;
             }
 

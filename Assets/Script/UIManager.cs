@@ -12,18 +12,18 @@ public class UIManager : MonoBehaviour
 
     public GameObject SpanPoint_WeChat;
 
-    public Button TestButton;
-    public Button TestButton2;
-    public Button TestButton3;
+    //public Button TestButton;
+    //public Button TestButton2;
+    //public Button TestButton3;
 
     float DelayClose_WeChat = 2.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.TestButton.onClick.AddListener(PushWeChat);
-        this.TestButton2.onClick.AddListener(PushDialogueLeft);
-        this.TestButton3.onClick.AddListener(PushDialogueRight);
+        //this.TestButton.onClick.AddListener(PushWeChat);
+        //this.TestButton2.onClick.AddListener(PushDialogueLeft);
+        //this.TestButton3.onClick.AddListener(PushDialogueRight);
     }
 
     // Update is called once per frame
@@ -33,13 +33,13 @@ public class UIManager : MonoBehaviour
     }
 
     // Î¢ÐÅµ¯¿ò
-    public void PushWeChat()
+    public void PushWeChat(string content)
     {
         GameObject obj = GameObject.Instantiate(this.WeChatMassage, this.SpanPoint_WeChat.transform);
         obj.transform.DOMoveY(456, 0.4f);
         
         obj.GetComponent<wechat>().name.text = "ÀÏ°å";
-        //obj.GetComponent<wechat>().content.text = content;
+        obj.GetComponent<wechat>().content.text = content;
 
         StartCoroutine(PopWeChat(obj));
     }
@@ -57,12 +57,12 @@ public class UIManager : MonoBehaviour
     }
 
     // ×ó²àÆøÅÝµ¯³ö
-    public void PushDialogueLeft()
+    public void PushDialogueLeft(string content)
     {
         GameObject obj = GameObject.Instantiate(this.DialogueLeft, this.SpanPoint_WeChat.transform);
         obj.transform.DOScale(new Vector3(1, 1, 1), 0.1f);
 
-        //obj.GetComponent<wechat>().content.text = content;
+        obj.GetComponent<wechat>().content.text = content;
 
         StartCoroutine(PopDialogLeft(obj));
     }
@@ -80,12 +80,12 @@ public class UIManager : MonoBehaviour
     }
 
     // ÓÒ²àÆøÅÝµ¯³ö
-    public void PushDialogueRight()
+    public void PushDialogueRight(string content)
     {
         GameObject obj = GameObject.Instantiate(this.DialogueRight, this.SpanPoint_WeChat.transform);
         obj.transform.DOScale(new Vector3(1, 1, 1), 0.2f);
 
-        //obj.GetComponent<wechat>().content.text = content;
+        obj.GetComponent<wechat>().content.text = content;
 
         StartCoroutine(PopDialogRight(obj));
     }

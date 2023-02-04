@@ -1,16 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RootsRay : MonoBehaviour
 {
 
-    public LineRenderer lineRenderer;
+    //public LineRenderer lineRenderer;
 
     private float extendSpeed;
 
-    [SerializeField] private float actDuration = 1f;
+    [SerializeField] private float actDuration = 0.5f;
     [SerializeField] private float actTimer = 0f;
 
     private bool isExtending = false;
@@ -37,7 +37,7 @@ public class RootsRay : MonoBehaviour
 
         curPosition = startPosition;
 
-        lineRenderer.SetPosition(0, startPosition);
+        //lineRenderer.SetPosition(0, startPosition);
         isExtending = true;
     }
 
@@ -47,30 +47,35 @@ public class RootsRay : MonoBehaviour
         
     }
 
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isExtending)
         {
-            lineRenderer.enabled = true;
+            //lineRenderer.enabled = true;
+            transform.GetComponent<Image>().enabled = true;
+            transform.up = direction;
             curPosition += direction * extendSpeed;
-            lineRenderer.SetPosition(1, curPosition);
+
+            transform.position = curPosition;
+            //lineRenderer.SetPosition(1, curPosition);
        
 
             if (Vector2.Distance(curPosition, endPosition) < 10f)
             {
                 isExtending = false;
                 isFading = true;
-
             }
 
         }
 
         if (isFading)
         {
-            actTimer += Time.deltaTime;
+            actTimer += Time.fixedDeltaTime;
             if(actTimer > actDuration)
             {
+                actTimer = 0;
                 if (hitCallback != null)
                 {
                     hitCallback();
@@ -78,7 +83,8 @@ public class RootsRay : MonoBehaviour
                     ActivedFollicle();
 
 
-                    lineRenderer.enabled = false;
+                    //lineRenderer.enabled = false;
+                    transform.GetComponent<Image>().enabled = false;
                     isFading = false;
                 }
             }
