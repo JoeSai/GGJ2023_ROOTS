@@ -80,12 +80,12 @@ public class Follicle : MonoBehaviour
                     if (this.isLeft)
                     {
                         oneHair.transform.localScale = new Vector3( 1, 1, 1);
-                        LevelManager.leftHairList.Add(oneHair);
+                        LevelManager.GetInstance.leftHairList.Add(oneHair);
                     }
                     else
                     {
                         oneHair.transform.localScale = new Vector3(-1, 1, 1);
-                        LevelManager.rightHairList.Add(oneHair);
+                        LevelManager.GetInstance.rightHairList.Add(oneHair);
                     }
 
                 }

@@ -6,6 +6,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    private static UIManager instance;
+
+    public static UIManager GetInstance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+
+
     public GameObject WeChatMassage;
     public GameObject DialogueLeft;
     public GameObject DialogueRight;
@@ -29,7 +40,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject follicles;
 
     private float timer = 10;
+    private bool isEnd = false;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +57,18 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isEnd)
+        {
+            return;
+        }
+
         int timer1 = (int)timer;
         timeText.text = timer1.ToString();
         timer -= Time.deltaTime;
 
         if(timer <= 0)
         {
-            timer = 0;
+            isEnd = true;
             follicles.SetActive(false);
             shopPanel.SetActive(true);
         }
@@ -58,6 +79,11 @@ public class UIManager : MonoBehaviour
         //{
         //    GameManager.GetInstance.SetLevelScore(GameManager.GetInstance.GetLevelScore() + 1);
         //}
+    }
+
+    public void OpenEvnetPanel()
+    {
+        eventPanel.SetActive(true);
     }
 
     // Î¢ÐÅµ¯¿ò

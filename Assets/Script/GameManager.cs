@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
                     GameObject go = new GameObject();
                     go.name = "GameManager";
                     instance = go.AddComponent<GameManager>();
+                    DontDestroyOnLoad(go);
                 }
             }
             return instance;

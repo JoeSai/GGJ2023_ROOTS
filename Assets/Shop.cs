@@ -33,11 +33,12 @@ public class Shop : MonoBehaviour
     public void HandFollow()
     {
         // 获取鼠标的屏幕坐标
-        Vector3 mouseScreenPosition = Camera.main.WorldToScreenPoint(Input.mousePosition);
-        mouseScreenPosition.z = 0;
-        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mouseScreenPosition.z);
-        // 设置操作手的位置
-        Hand.transform.position = mousePosition;
+        //print(Input.mousePosition);
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0;
+        //Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mouseScreenPosition.z);
+        //// 设置操作手的位置
+        Hand.transform.position = mouseWorldPosition;
     }
 
     // 判断钱是否足够购买道具
@@ -93,5 +94,11 @@ public class Shop : MonoBehaviour
             int currentCount = GameManager.GetInstance.GetFeinaxiong();
             GameManager.GetInstance.SetFeinaxiongCount(currentCount + 1);
         }
+    }
+
+    public void OnClickNext()
+    {
+        this.gameObject.SetActive(false);
+        UIManager.GetInstance.OpenEvnetPanel();
     }
 }

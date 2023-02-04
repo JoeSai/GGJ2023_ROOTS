@@ -3,13 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    public static List<Hair> leftHairList = new List<Hair>();
-    public static List<Hair> rightHairList = new List<Hair>();
+    private static LevelManager instance;
+
+    public static LevelManager GetInstance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+    [SerializeField] public List<Hair> leftHairList = new List<Hair>();
+    [SerializeField] public List<Hair> rightHairList = new List<Hair>();
     [SerializeField] List<Follicle> follicleList;
 
     [SerializeField] UIManager uimanager;
@@ -42,6 +52,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         InitCfg();
 
         InitController();
@@ -253,6 +264,10 @@ public class LevelManager : MonoBehaviour
         return selectedElements;
     }
 
+    public void LoadNextLevel(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 
 }
 
