@@ -6,14 +6,20 @@ using UnityEngine.UI;
 public enum FollicleState
 {
     Live,
-    Dead,
+    Obstructed,
     Active,
     Actived,
 }
 
+
+
 public class Follicle : MonoBehaviour
 {
     private Image image;
+
+    private float activedDuration;
+    private float obstructedDuration;
+    private float timer = 0;
 
 
     private FollicleState state;
@@ -25,40 +31,88 @@ public class Follicle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = FollicleState.Live;
-        image.color = Color.white;
+        SetState(FollicleState.Live);
     }
 
-    public void SetActive()
+    public void Init(float activedDuration)
     {
-        state = FollicleState.Active;
-        image.color = Color.yellow;
+        this.activedDuration = activedDuration;
     }
 
-    public void SetActived()
+    public void SetObstructedDuration(float obstructedDuration)
     {
-        if (state == FollicleState.Active)
+        this.obstructedDuration = obstructedDuration;
+    }
+
+    public void SetState(FollicleState state)
+    {
+
+        switch (state)
         {
-            state = FollicleState.Actived;
-            image.color = Color.red;
+            case FollicleState.Live:
+                image.color = Color.white;
+                this.state = FollicleState.Live;
+                break;
+            case FollicleState.Obstructed:
+                image.color = Color.black;
+                this.state = FollicleState.Obstructed;
+                break;
+            case FollicleState.Active:
+                image.color = Color.yellow;
+                this.state = FollicleState.Active;
+                break;
+            case FollicleState.Actived:
+                if (this.state == FollicleState.Active)
+                {
+                    this.state = FollicleState.Actived;
+                    image.color = Color.red;
+                }
+                break;
+            default:
+                break;
         }
+
+
     }
+
 
     public FollicleState GetState()
     {
         return state;
     }
-    public void SetDead()
-    {
-        state = FollicleState.Dead;
-        image.color = Color.black;
-    }
-
 
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (state == FollicleState.Active)
+        {
+            timer += Time.deltaTime;
+            if (timer > activedDuration)
+            {
+                timer = 0;
+                SetState(FollicleState.Live);
+            }
+        }
+
+        if(state == FollicleState.Actived)
+        {
+            timer += Time.deltaTime;
+            if (timer > 1f)
+            {
+                timer = 0;
+                SetState(FollicleState.Live);
+            }
+        }
+
+        if (state == FollicleState.Obstructed)
+        {
+            timer += Time.deltaTime;
+            if (timer > obstructedDuration)
+            {
+                timer = 0;
+                SetState(FollicleState.Live);
+            }
+        }
     }
 }

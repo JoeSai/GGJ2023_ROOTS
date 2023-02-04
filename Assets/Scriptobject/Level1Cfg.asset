@@ -15,3 +15,4 @@ MonoBehaviour:
   rotationalSpeed: 2
   excitationRate: 2
   excitationDuration: 2
+  triggerMsgInterval: 10

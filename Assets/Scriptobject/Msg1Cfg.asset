@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9decd2f77b687c0449cfc2e020e97d8c, type: 3}
   m_Name: Msg1Cfg
   m_EditorClassIdentifier: 
-  bossMsgList:
-  - 
-  - 
-  - 
-  - 
-  - 
-  artserMsgList: []
-  designerMsgList: []
+  bossMsgData:
+    msgList:
+    - boss
+    probability: 70
+    msgType: 0
+  artserMsgData:
+    msgList:
+    - art
+    probability: 15
+    msgType: 1
+  designerMsgData:
+    msgList:
+    - designer
+    probability: 15
+    msgType: 2

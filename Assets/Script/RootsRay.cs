@@ -15,7 +15,6 @@ public class RootsRay : MonoBehaviour
 
     private bool isExtending = false;
     private bool isFading = false;
-    private bool isEnd = false;
 
     private Vector3 startPosition;
     private Vector3 endPosition;
@@ -64,11 +63,6 @@ public class RootsRay : MonoBehaviour
                 isFading = true;
 
             }
-            //if (extendTimer >= extendTime)
-            //{
-            //    isExtending = false;
-            //    lineRenderer.enabled = false;
-            //}
 
         }
 
@@ -77,9 +71,6 @@ public class RootsRay : MonoBehaviour
             actTimer += Time.deltaTime;
             if(actTimer > actDuration)
             {
-                //GameObject.Destroy(gameObject);
-     
-
                 if (hitCallback != null)
                 {
                     hitCallback();
@@ -99,7 +90,7 @@ public class RootsRay : MonoBehaviour
     {
         if(hitFollicle && hitFollicle.GetComponent<Follicle>() != null)
         {
-            hitFollicle.GetComponent<Follicle>().SetActived();
+            hitFollicle.GetComponent<Follicle>().SetState(FollicleState.Actived);
         }
     }
 }

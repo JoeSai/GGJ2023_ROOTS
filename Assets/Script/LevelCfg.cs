@@ -8,4 +8,6 @@ public class LevelCfg : ScriptableObject
     public float rotationalSpeed;
     public int excitationRate;
     public float excitationDuration;
+
+    public float triggerMsgInterval;
 }
