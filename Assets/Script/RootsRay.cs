@@ -25,7 +25,7 @@ public class RootsRay : MonoBehaviour
     private Transform hitFollicle;
     private Action hitCallback;
 
-    public void Initialize(Vector3 startPos, Vector3 endPos, float extendSpeed, Transform hitFollicle, Action hitCallback)
+    public void InitializeRay(Vector3 startPos, Vector3 endPos, float extendSpeed, Transform hitFollicle, Action hitCallback)
     {
         this.startPosition = startPos;
         this.endPosition = endPos;

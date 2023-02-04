@@ -7,7 +7,7 @@ public class RootsController : MonoBehaviour
     [SerializeField] private float rotationalSpeed = 1.0f;
     [SerializeField] private float angle = 180f;
 
-    [SerializeField] private float raySpeed = 1f;
+    [SerializeField] private float raySpeed = 10f;
 
     private float startAngle = 0f;
     private float currentAngle = 0f;
@@ -74,7 +74,7 @@ public class RootsController : MonoBehaviour
             }
 
 
-            rootsRay.Initialize(startPosition, endPosition, raySpeed, hitTr, () =>
+            rootsRay.InitializeRay(startPosition, endPosition, raySpeed, hitTr, () =>
             {
                 state = RootsState.Rotate;
             });
@@ -84,8 +84,9 @@ public class RootsController : MonoBehaviour
 
     }
 
-    public void SetBaseValue(float rotationalSpeed, float excitationRate, float excitationDuration)
+    public void SetBaseValue(float rotationalSpeed, float raySpeed)
     {
         this.rotationalSpeed = rotationalSpeed;
+        this.raySpeed = raySpeed;
     }
 }

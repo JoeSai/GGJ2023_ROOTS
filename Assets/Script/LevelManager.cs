@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] List<Follicle> follicleList;  
 
     [SerializeField] private float rotationalSpeed; //转动速度
+    [SerializeField] private float raySpeed; //射线速度
+
     [SerializeField] private int excitationRate; //毛囊激活速率
     [SerializeField] private float excitationDuration; //毛囊激活时间
 
@@ -62,7 +64,7 @@ public class LevelManager : MonoBehaviour
 
     private void InitController()
     {
-        rootsController.SetBaseValue(rotationalSpeed, excitationRate, excitationDuration);
+        rootsController.SetBaseValue(rotationalSpeed, raySpeed);
     }
 
 

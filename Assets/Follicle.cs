@@ -58,7 +58,7 @@ public class Follicle : MonoBehaviour
                 this.state = FollicleState.Obstructed;
                 break;
             case FollicleState.Active:
-                image.color = Color.yellow;
+                image.color = Color.blue;
                 this.state = FollicleState.Active;
                 break;
             case FollicleState.Actived:
