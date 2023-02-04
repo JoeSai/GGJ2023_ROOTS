@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     public GameObject DialogueLeft;
     public GameObject DialogueRight;
 
+    public FloatingText floatingTextPrefab;
+    public Transform floatingTextParent;
+
     public GameObject SpanPoint_WeChat;
 
     //public Button TestButton;
@@ -39,9 +42,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject eventPanel;
     [SerializeField] private GameObject follicles;
 
-    private float timer = 10;
+    private float timer = 60;
     private bool isEnd = false;
 
+    public void FloatingText(string msg)
+    {
+        FloatingText floatingText = Instantiate(floatingTextPrefab, floatingTextParent);
+        floatingText.SetText(msg);
+    }
     private void Awake()
     {
         instance = this;

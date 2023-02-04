@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     }
     [SerializeField] public List<Hair> leftHairList = new List<Hair>();
     [SerializeField] public List<Hair> rightHairList = new List<Hair>();
+
     [SerializeField] List<Follicle> follicleList;
 
     [SerializeField] UIManager uimanager;
@@ -49,6 +50,54 @@ public class LevelManager : MonoBehaviour
 
     private float excitationInterval = 1f; // 毛囊激活间隔
     private float excitationTimer = 0f;
+
+    private bool debuffResistanceIsOn = false; //霸王防脱
+    private bool excitationRateUpIsOn = false; //天灵灵生发剂
+    private bool raySpeedUpIsOn = false; //米诺地尔酊
+    private bool rotationalSpeedDownIsOn = false; //非那雄胺片
+
+    public void TurnOnDebuffResistance() { 
+    
+        if(!debuffResistanceIsOn)
+        {
+                debuffResistanceIsOn = true;
+        uimanager.FloatingText("减少所有减益效果的影响");
+        }
+
+        //uimanager.
+    }
+    public void TurnOnExcitationRateUp()
+    {
+        if (!excitationRateUpIsOn)
+        {
+            excitationRateUpIsOn = true;
+            excitationRate += 1;
+        }
+
+        //uimanager.
+    }
+    public void TurnOnRaySpeedUp()
+    {
+        if(!raySpeedUpIsOn)
+        {
+            raySpeedUpIsOn = true;
+
+            raySpeed *= 1.3f;
+            rootsController.SetBaseValue(rotationalSpeed, raySpeed);
+            //uimanager.
+        }
+
+    }
+    public void TurnOnRotationalSpeedDown()
+    {
+        if (!rotationalSpeedDownIsOn)
+        {
+            rotationalSpeedDownIsOn = true;
+            rotationalSpeed *= 0.7f;
+            rootsController.SetBaseValue(rotationalSpeed, raySpeed);
+        }
+        //uimanager.
+    }
 
     private void Awake()
     {
@@ -115,6 +164,22 @@ public class LevelManager : MonoBehaviour
         ActiveFollicle();
         TriggerMsg();
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            TurnOnDebuffResistance();
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            TurnOnExcitationRateUp();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TurnOnRaySpeedUp();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            TurnOnRotationalSpeedDown();
+        }
     }
 
     private void TriggerMsg()
@@ -172,6 +237,12 @@ public class LevelManager : MonoBehaviour
     }
     private void HandleBuffer(BuffEvent e){
         int count = e.count;
+
+        if (excitationRateUpIsOn)
+        {
+            count = count - 1;
+        }
+
         int duration = e.duration;
         List<Hair> list;
         switch (e.buffTpye)

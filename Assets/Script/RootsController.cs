@@ -49,8 +49,8 @@ public class RootsController : MonoBehaviour
 
         if (state == RootsState.Rotate)
         {
-            timer += Time.deltaTime;
-            currentAngle = Mathf.Sin(timer * rotationalSpeed) * angle / 2 + startAngle;
+            timer += Time.deltaTime * rotationalSpeed;
+            currentAngle = Mathf.Sin(timer) * angle / 2 + startAngle;
             transform.eulerAngles = new Vector3(0, 0, currentAngle);
         }
 

@@ -32,7 +32,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    string ShopScore = "ShopScore";
+
+    int shopScore;
+    int bwCount;
+    int sfjCount;
+    int mnCount;
+    int fnxCount;
     //string LevelScore = "LevelScore";
     string Item_Bawang = "Bawang";
     string Item_Shengfaji = "Tianlingling";
@@ -56,20 +61,12 @@ public class GameManager : MonoBehaviour
     // 拿到购物积分
     public int GetShopScore()
     {
-        int ret = PlayerPrefs.GetInt(ShopScore, 0);
-        return ret;
+        return shopScore;
     }
     // 写入购物积分
     public void SetShopScore(int shopScore)
     {
-        if(PlayerPrefs.HasKey(ShopScore))
-        {
-            PlayerPrefs.SetInt(ShopScore, shopScore);
-        }
-        else
-        {
-            Debug.Log(ShopScore + "数据不存在");
-        }
+        this.shopScore = shopScore;
     }
 
     // 拿到关卡得分
@@ -93,76 +90,45 @@ public class GameManager : MonoBehaviour
     // 拿到霸王的数量
     public int GetBawangCount()
     {
-        int ret = PlayerPrefs.GetInt(Item_Bawang, 0);
-        return ret;
+        return bwCount;
+
     }
     // 写入霸王的数量
-    public void SetBawangCount(int levelScore)
+    public void SetBawangCount(int count)
     {
-        if (PlayerPrefs.HasKey(Item_Bawang))
-        {
-            PlayerPrefs.SetInt(Item_Bawang, levelScore);
-        }
-        else
-        {
-            Debug.Log(Item_Bawang + "数据不存在");
-        }
+        bwCount = levelScore;
     }
 
     // 拿到生发剂的数量
     public int GetShengfaji()
     {
-        int ret = PlayerPrefs.GetInt(Item_Shengfaji, 0);
-        return ret;
+        return sfjCount;
     }
     // 写入生发剂的数量
-    public void SetShengfajiCount(int levelScore)
+    public void SetShengfajiCount(int count)
     {
-        if (PlayerPrefs.HasKey(Item_Shengfaji))
-        {
-            PlayerPrefs.SetInt(Item_Shengfaji, levelScore);
-        }
-        else
-        {
-            Debug.Log(Item_Shengfaji + "数据不存在");
-        }
+         sfjCount = count;
     }
 
     // 拿到米诺地尔酊的数量
     public int GetMinuo()
     {
-        int ret = PlayerPrefs.GetInt(Item_Minuo, 0);
-        return ret;
+        return mnCount;
     }
     // 写入米诺地尔酊的数量
-    public void SetMinuoCount(int levelScore)
+    public void SetMinuoCount(int count)
     {
-        if (PlayerPrefs.HasKey(Item_Minuo))
-        {
-            PlayerPrefs.SetInt(Item_Minuo, levelScore);
-        }
-        else
-        {
-            Debug.Log(Item_Minuo + "数据不存在");
-        }
+        mnCount = count;
     }
 
     // 拿到非那雄氨片的数量
     public int GetFeinaxiong()
     {
-        int ret = PlayerPrefs.GetInt(Item_Feinaxiong, 0);
-        return ret;
+        return fnxCount;
     }
     // 写入非那雄胺片的数量
-    public void SetFeinaxiongCount(int levelScore)
+    public void SetFeinaxiongCount(int count)
     {
-        if (PlayerPrefs.HasKey(Item_Feinaxiong))
-        {
-            PlayerPrefs.SetInt(Item_Feinaxiong, levelScore);
-        }
-        else
-        {
-            Debug.Log(Item_Feinaxiong + "数据不存在");
-        }
+        fnxCount = count;
     }
 }
