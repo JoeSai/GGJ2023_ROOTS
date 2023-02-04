@@ -1,15 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
     public GameObject Hand;
 
+    public Button Item1;
+    public Button Item2;
+    public Button Item3;
+    public Button Item4;
+
+    int ItemPrice = 10;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Item1.onClick.AddListener(BuyItem1);
+        Item2.onClick.AddListener(BuyItem2);
+        Item3.onClick.AddListener(BuyItem3);
+        Item4.onClick.AddListener(BuyItem4);
     }
 
     // Update is called once per frame
@@ -29,9 +40,58 @@ public class Shop : MonoBehaviour
         Hand.transform.position = mousePosition;
     }
 
-    // 道具购买
-    public void BuyItem()
+    // 判断钱是否足够购买道具
+    public bool IsCoinEnough()
     {
+        int currentCoin = GameManager.GetInstance.GetShopScore();
 
+        if(currentCoin >= ItemPrice)
+        {
+            return true;
+        }
+        else
+        {
+            Debug.Log("余额不足");
+
+            return false;
+        }
+    }
+
+    // 道具购买
+    // 霸王防脱洗发水
+    public void BuyItem1()
+    {
+        if (IsCoinEnough())
+        {
+            int currentCount = GameManager.GetInstance.GetBawangCount();
+            GameManager.GetInstance.SetBawangCount(currentCount + 1);
+        }
+    }
+    // 生发剂
+    public void BuyItem2()
+    {
+        if (IsCoinEnough())
+        {
+            int currentCount = GameManager.GetInstance.GetShengfaji();
+            GameManager.GetInstance.SetShengfajiCount(currentCount + 1);
+        }
+    }
+    // 米诺地尔酊
+    public void BuyItem3()
+    {
+        if (IsCoinEnough())
+        {
+            int currentCount = GameManager.GetInstance.GetMinuo();
+            GameManager.GetInstance.SetMinuoCount(currentCount + 1);
+        }
+    }
+    // 非那雄氨片
+    public void BuyItem4()
+    {
+        if (IsCoinEnough())
+        {
+            int currentCount = GameManager.GetInstance.GetFeinaxiong();
+            GameManager.GetInstance.SetFeinaxiongCount(currentCount + 1);
+        }
     }
 }
