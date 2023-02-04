@@ -71,9 +71,19 @@ public class Follicle : MonoBehaviour
                     image.color = Color.red;
 
                     Hair oneHair = Instantiate(hairPrefab, transform);
-                    oneHair.transform.localPosition = new Vector3(0, 80, 0);
-                    oneHair.transform.localScale = new Vector3(this.isLeft ? 1 : -1, 1, 1);
-                    LevelManager.hairList.Add(oneHair);
+                    oneHair.transform.localPosition = new Vector3(0, 0, 0);
+
+                    if (this.isLeft)
+                    {
+                        oneHair.transform.localScale = new Vector3( 1, 1, 1);
+                        LevelManager.leftHairList.Add(oneHair);
+                    }
+                    else
+                    {
+                        oneHair.transform.localScale = new Vector3(-1, 1, 1);
+                        LevelManager.rightHairList.Add(oneHair);
+                    }
+
                 }
                 break;
             default:

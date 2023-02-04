@@ -21,6 +21,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Animation leftHandAnim;
     [SerializeField] private Animation rightHandAnim;
 
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Text timeText;
+
     // Start is called before the first frame update
     void Start()
     {

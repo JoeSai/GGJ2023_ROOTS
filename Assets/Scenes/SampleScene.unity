@@ -2889,7 +2889,7 @@ GameObject:
   - component: {fileID: 971840834}
   - component: {fileID: 971840833}
   m_Layer: 5
-  m_Name: Number
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4286,6 +4286,8 @@ MonoBehaviour:
   SpanPoint_WeChat: {fileID: 1708812825}
   leftHandAnim: {fileID: 1509311603}
   rightHandAnim: {fileID: 471992876}
+  scoreText: {fileID: 971840833}
+  timeText: {fileID: 2102333469}
 --- !u!1 &1415970433
 GameObject:
   m_ObjectHideFlags: 0
@@ -6304,7 +6306,7 @@ GameObject:
   - component: {fileID: 2102333470}
   - component: {fileID: 2102333469}
   m_Layer: 5
-  m_Name: Number (1)
+  m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6363,7 +6365,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 23
+  m_Text: 0
 --- !u!222 &2102333470
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -8,9 +8,9 @@ using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
-    public static List<Hair> hairList = new List<Hair>();
+    public static List<Hair> leftHairList = new List<Hair>();
+    public static List<Hair> rightHairList = new List<Hair>();
     [SerializeField] List<Follicle> follicleList;
-
 
     [SerializeField] UIManager uimanager;
 
@@ -90,7 +90,6 @@ public class LevelManager : MonoBehaviour
             {
                 follicle.Init(excitationDuration, true);
             }
-        
         }
     }
 
@@ -104,6 +103,7 @@ public class LevelManager : MonoBehaviour
     {
         ActiveFollicle();
         TriggerMsg();
+
     }
 
     private void TriggerMsg()
@@ -162,6 +162,7 @@ public class LevelManager : MonoBehaviour
     private void HandleBuffer(BuffEvent e){
         int count = e.count;
         int duration = e.duration;
+        List<Hair> list;
         switch (e.buffTpye)
         {
     
@@ -196,10 +197,22 @@ public class LevelManager : MonoBehaviour
 
             case BuffType.L_RegionalAlopecia:
                 //print("l tuofa");
+                list = GetRandomElements(leftHairList, count);
+                foreach (var hair in list)
+                {
+                    leftHairList.Remove(hair);
+                    hair.SetHairDown();
+                }
                 uimanager.PerformLeftHandAnim();
                 break;
 
             case BuffType.R_RegionalAlopecia:
+                list = GetRandomElements(rightHairList, count);
+                foreach (var hair in list)
+                {
+                    rightHairList.Remove(hair);
+                    hair.SetHairDown();
+                }
                 //print("r tuofa");
                 uimanager.PerformRightHandAnim();
                 break;
@@ -221,6 +234,21 @@ public class LevelManager : MonoBehaviour
                 uimanager.PushDialogueRight(msgString);
                 break;
         }
+    }
+
+    public static List<T> GetRandomElements<T>(List<T> list, int n)
+    {
+        List<T> selectedElements = new List<T>();
+        System.Random random = new System.Random();
+        int count = 0;
+        while (count < n && list.Count > 0)
+        {
+            int index = random.Next(list.Count);
+            selectedElements.Add(list[index]);
+            list.RemoveAt(index);
+            count++;
+        }
+        return selectedElements;
     }
 
 
