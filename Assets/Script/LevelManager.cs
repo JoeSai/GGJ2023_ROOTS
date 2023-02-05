@@ -127,7 +127,7 @@ public class LevelManager : MonoBehaviour
             case SleepState.Hangover:
                 for (int i = 0; i < follicleList.Count; i++)
                 {
-                    if(i % 2 == 0)
+                    if(i % 3 == 0)
                     {
                         hideList.Add(follicleList[i]);
                     }
