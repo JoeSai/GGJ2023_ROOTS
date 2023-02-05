@@ -5354,6 +5354,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1858312588}
+    - target: {fileID: 5897896528831091850, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5897896529176450524, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5446,6 +5450,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5897896529837408767, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5897896529921289059, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5454,6 +5462,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1858312588}
+    - target: {fileID: 5897896529933631331, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
+      propertyPath: m_Text
+      value: "\u96C4\u5FC3\u58EE\u5FD7"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897896530207716139, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
+      propertyPath: m_Text
+      value: "\u4F60\u9A6C\u4E0A\u8981\u6BD5\u4E1A\u4E86\uFF0C\u52A0\u6CB9\u627E\u5DE5\u4F5C\uFF01"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
 --- !u!1001 &7539674795058637419

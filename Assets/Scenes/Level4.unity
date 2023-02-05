@@ -3520,7 +3520,7 @@ MonoBehaviour:
   baomuImgList: {fileID: 8304053183884839186}
   losePanel: {fileID: 1420636855}
   timer: 80
-  needScore: 60
+  needScore: 55
 --- !u!1 &1415970433 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5897896529176450527, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
