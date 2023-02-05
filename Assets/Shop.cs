@@ -12,6 +12,11 @@ public class Shop : MonoBehaviour
     public Button Item3;
     public Button Item4;
 
+    public GameObject Sale1;
+    public GameObject Sale2;
+    public GameObject Sale3;
+    public GameObject Sale4;
+
     public Text Money;
 
     int ItemPrice = 10;
@@ -78,6 +83,8 @@ public class Shop : MonoBehaviour
             GameManager.GetInstance.SetBawangCount(currentCount + 1);
 
             print(GameManager.GetInstance.GetBawangCount());
+
+            Sale1.SetActive(true);
         }
     }
     // 生发剂
@@ -87,6 +94,8 @@ public class Shop : MonoBehaviour
         {
             int currentCount = GameManager.GetInstance.GetShengfaji();
             GameManager.GetInstance.SetShengfajiCount(currentCount + 1);
+
+            Sale2.SetActive(true);
         }
     }
     // 米诺地尔酊
@@ -96,6 +105,8 @@ public class Shop : MonoBehaviour
         {
             int currentCount = GameManager.GetInstance.GetMinuo();
             GameManager.GetInstance.SetMinuoCount(currentCount + 1);
+
+            Sale3.SetActive(true);
         }
     }
     // 非那雄氨片
@@ -105,6 +116,8 @@ public class Shop : MonoBehaviour
         {
             int currentCount = GameManager.GetInstance.GetFeinaxiong();
             GameManager.GetInstance.SetFeinaxiongCount(currentCount + 1);
+
+            Sale4.SetActive(true);
         }
     }
 

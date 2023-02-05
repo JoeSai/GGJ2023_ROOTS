@@ -8,8 +8,8 @@ public class EndPanel : MonoBehaviour
 {
     [SerializeField] private Text endText;
 
-    public float typingSpeed = 0.05f;
-    public string fullText = "What doesn't kill you makes you stronger";
+    public float typingSpeed = 0.1f;
+    public string fullText = "你变秃了，也变强了";
 
     private string currentText = "";
     [SerializeField] GameObject restartBtn;
