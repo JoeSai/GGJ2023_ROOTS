@@ -125,15 +125,39 @@ public class LevelManager : MonoBehaviour
             case SleepState.Normal:
                 break;
             case SleepState.Hangover:
-                for (int i = 0; i < follicleList.Count; i++)
+                //for (int i = 0; i < follicleList.Count; i++)
+                //{
+                //    if(i % 3 == 0)
+                //    {
+                //        hideList.Add(follicleList[i]);
+                //    }
+                //}
+                int count = 2;
+                int duration = 80;
+                List<Follicle> selectedList = new List<Follicle>();
+
+                var deadFollicles = follicleList
+                .Where(follicle => follicle.GetState() != FollicleState.Obstructed)
+                .ToList();
+
+
+                System.Random random = new System.Random();
+                int selectCount = 0;
+                while (selectCount < count && deadFollicles.Count > 0)
                 {
-                    if(i % 3 == 0)
-                    {
-                        hideList.Add(follicleList[i]);
-                    }
+                    int index = random.Next(deadFollicles.Count);
+                    selectedList.Add(deadFollicles[index]);
+                    deadFollicles.RemoveAt(index);
+                    selectCount++;
                 }
 
-                StartCoroutine(HideFollicle(hideList));
+                foreach (var follicle in selectedList)
+                {
+                    follicle.SetObstructedDuration(duration);
+                    follicle.SetState(FollicleState.Obstructed);
+                }
+
+                //StartCoroutine(HideFollicle(hideList));
                 break;
             case SleepState.StayUpLate:
 

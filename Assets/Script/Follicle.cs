@@ -53,22 +53,26 @@ public class Follicle : MonoBehaviour
         switch (state)
         {
             case FollicleState.Live:
-                image.color = Color.white;
+                image.color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.5f) ;
+
                 this.state = FollicleState.Live;
                 break;
             case FollicleState.Obstructed:
-                image.color = Color.black;
+
+                image.color = new Color(Color.red.r, Color.red.g, Color.red.b, 0.5f);
                 this.state = FollicleState.Obstructed;
                 break;
             case FollicleState.Active:
-                image.color = Color.blue;
+              
+                image.color = new Color(Color.blue.r, Color.blue.g, Color.blue.b, 0.5f);
                 this.state = FollicleState.Active;
                 break;
             case FollicleState.Actived:
                 if (this.state == FollicleState.Active)
                 {
                     this.state = FollicleState.Actived;
-                    image.color = Color.red;
+                    image.color = new Color(Color.yellow.r, Color.yellow.g, Color.yellow.b, 0.5f);
+                
 
                     Hair oneHair = Instantiate(hairPrefab, transform);
                     int radomX = Random.Range(-20, 20);
