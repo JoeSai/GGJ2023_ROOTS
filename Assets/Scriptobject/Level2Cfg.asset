@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3e56267c2d2ff640a6432591cfdd5e1, type: 3}
-  m_Name: Level1Cfg
+  m_Name: Level2Cfg
   m_EditorClassIdentifier: 
-  rotationalSpeed: 2
-  excitationRate: 4
-  excitationDuration: 5
-  raySpeed: 5
-  triggerMsgInterval: 20
+  rotationalSpeed: 5
+  excitationRate: 3
+  excitationDuration: 4
+  raySpeed: 7
+  triggerMsgInterval: 10

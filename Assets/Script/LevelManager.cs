@@ -137,7 +137,7 @@ public class LevelManager : MonoBehaviour
    
                 for (int i = 0; i < follicleList.Count; i++)
                 {
-                    if (i % 2 == 0)
+                    if (i % 3 == 0)
                     {
                         hideList.Add(follicleList[i]);
                     }
@@ -146,10 +146,10 @@ public class LevelManager : MonoBehaviour
                 StartCoroutine(HideFollicle(hideList));
                 break;
             case SleepState.SleepEarly:
-                excitationRate += 1;
+                excitationInterval -= 0.2f;
                 break;
             case SleepState.Happy:
-                excitationRate += 1;
+                excitationInterval -= 0.1f;
                 break;
             default:
                 break;
@@ -366,12 +366,15 @@ public class LevelManager : MonoBehaviour
         {
             case 0:
                 uimanager.PushWeChat(msgString);
+                uimanager.PerformBaomuEffect();
                 break;
             case 1:
                 uimanager.PushDialogueLeft(msgString);
+                uimanager.PerformBaomuEffect();
                 break;
             case 2:
                 uimanager.PushDialogueRight(msgString);
+                uimanager.PerformBaomuEffect();
                 break;
         }
     }

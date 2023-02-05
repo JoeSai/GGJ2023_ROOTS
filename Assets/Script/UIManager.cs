@@ -41,6 +41,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject eventPanel;
     [SerializeField] private GameObject follicles;
+    [SerializeField] private GameObject baomuImgList;
 
     private float timer = 60;
     private bool isEnd = false;
@@ -172,5 +173,21 @@ public class UIManager : MonoBehaviour
     public void PerformRightHandAnim()
     {
         rightHandAnim.Play();
+    }
+
+    public void PerformBaomuEffect()
+    {
+        if (!baomuImgList)
+        {
+            return;
+        }
+        foreach (Transform child in baomuImgList.transform)
+        {
+            if(child && child.GetComponent<Image>().enabled == false)
+            {
+                child.GetComponent<Image>().enabled = true;
+                break;
+            }
+        }
     }
 }

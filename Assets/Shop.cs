@@ -12,6 +12,8 @@ public class Shop : MonoBehaviour
     public Button Item3;
     public Button Item4;
 
+    public Text Money;
+
     int ItemPrice = 10;
 
     // Start is called before the first frame update
@@ -21,6 +23,10 @@ public class Shop : MonoBehaviour
         Item2.onClick.AddListener(BuyItem2);
         Item3.onClick.AddListener(BuyItem3);
         Item4.onClick.AddListener(BuyItem4);
+
+        GameManager.GetInstance.SetShopScore(GameManager.GetInstance.GetShopScore() + 10);
+
+        Money.text = "￥" + GameManager.GetInstance.GetShopScore();
     }
 
     // Update is called once per frame
@@ -48,12 +54,14 @@ public class Shop : MonoBehaviour
 
         if(currentCoin >= ItemPrice)
         {
+            GameManager.GetInstance.SetShopScore(GameManager.GetInstance.GetShopScore() - 10);
+            UIManager.GetInstance.FloatingText("已下单");
+            Money.text = "￥" + GameManager.GetInstance.GetShopScore();
             return true;
         }
         else
         {
-            Debug.Log("余额不足");
-
+            UIManager.GetInstance.FloatingText("余额不足");
             return false;
         }
     }
@@ -66,6 +74,8 @@ public class Shop : MonoBehaviour
         {
             int currentCount = GameManager.GetInstance.GetBawangCount();
             GameManager.GetInstance.SetBawangCount(currentCount + 1);
+
+            print(GameManager.GetInstance.GetBawangCount());
         }
     }
     // 生发剂

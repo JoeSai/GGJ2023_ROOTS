@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
     // 写入霸王的数量
     public void SetBawangCount(int count)
     {
-        bwCount = levelScore;
+        bwCount = count;
     }
 
     // 拿到生发剂的数量
