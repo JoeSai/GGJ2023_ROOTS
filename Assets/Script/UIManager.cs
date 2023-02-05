@@ -42,9 +42,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject eventPanel;
     [SerializeField] private GameObject follicles;
     [SerializeField] private GameObject baomuImgList;
+    [SerializeField] private GameObject losePanel;
 
     public float timer = 60;
     private bool isEnd = false;
+    public int needScore = 0;
 
     public void FloatingText(string msg)
     {
@@ -79,6 +81,13 @@ public class UIManager : MonoBehaviour
         {
             isEnd = true;
             LevelManager.GetInstance.isEnd = true;
+
+            if (GameManager.GetInstance.GetLevelScore() < needScore)
+            {
+                losePanel.SetActive(true);
+                return;
+            }
+
             follicles.SetActive(false);
             shopPanel.SetActive(true);
         }

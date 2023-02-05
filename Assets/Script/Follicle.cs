@@ -53,7 +53,7 @@ public class Follicle : MonoBehaviour
         switch (state)
         {
             case FollicleState.Live:
-                image.color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.5f) ;
+                image.color = new Color(Color.white.r, Color.white.g, Color.white.b, 0.5f) ;
 
                 this.state = FollicleState.Live;
                 break;

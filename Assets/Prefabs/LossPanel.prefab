@@ -538,8 +538,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EndPanel, Assembly-CSharp
+      - m_Target: {fileID: 155528058165445970}
+        m_TargetAssemblyTypeName: LossPanel, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
