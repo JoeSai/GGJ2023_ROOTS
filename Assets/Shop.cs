@@ -24,7 +24,7 @@ public class Shop : MonoBehaviour
         Item3.onClick.AddListener(BuyItem3);
         Item4.onClick.AddListener(BuyItem4);
 
-        GameManager.GetInstance.SetShopScore(GameManager.GetInstance.GetShopScore() + 10);
+        GameManager.GetInstance.SetShopScore(GameManager.GetInstance.GetShopScore() + 20);
 
         Money.text = "£¤" + GameManager.GetInstance.GetShopScore();
     }
@@ -57,6 +57,8 @@ public class Shop : MonoBehaviour
             GameManager.GetInstance.SetShopScore(GameManager.GetInstance.GetShopScore() - 10);
             UIManager.GetInstance.FloatingText("ÒÑÏÂµ¥");
             Money.text = "£¤" + GameManager.GetInstance.GetShopScore();
+
+            AudioManager.instance.PlaySoundEffectByName("Shop_Buy");
             return true;
         }
         else

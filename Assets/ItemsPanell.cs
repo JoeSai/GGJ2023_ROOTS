@@ -33,6 +33,9 @@ public class ItemsPanell : MonoBehaviour
             GameManager.GetInstance.SetBawangCount(count - 1);
             UIManager.GetInstance.FloatingText("减少所有减益效果的影响");
             bwCount.text = GameManager.GetInstance.GetBawangCount().ToString();
+
+
+            AudioManager.instance.PlaySoundEffectByName("Medicine_Wash");
         }
     }
     public void OnClickSfj()
@@ -44,6 +47,8 @@ public class ItemsPanell : MonoBehaviour
             GameManager.GetInstance.SetShengfajiCount(count - 1);
             UIManager.GetInstance.FloatingText("会出现更多可生长的点");
             sfjCount.text = GameManager.GetInstance.GetShengfaji().ToString();
+
+            AudioManager.instance.PlaySoundEffectByName("Medicine_Spray");
         }
     }
     public void OnClickMnd()
@@ -55,6 +60,8 @@ public class ItemsPanell : MonoBehaviour
             GameManager.GetInstance.SetMinuoCount(count - 1);
             UIManager.GetInstance.FloatingText("能量供给变快");
             mndCount.text = GameManager.GetInstance.GetMinuo().ToString();
+
+            AudioManager.instance.PlaySoundEffectByName("Medicine_Daub");
         }
     }
     public void OnClickFnx()
@@ -66,6 +73,8 @@ public class ItemsPanell : MonoBehaviour
             GameManager.GetInstance.SetFeinaxiongCount(count - 1);
             UIManager.GetInstance.FloatingText("转盘转动更慢");
             fnxCount.text = GameManager.GetInstance.GetFeinaxiong().ToString();
+
+            AudioManager.instance.PlaySoundEffectByName("Medicine_Pill");
         }
     }
 }

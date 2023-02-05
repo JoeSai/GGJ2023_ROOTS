@@ -56,12 +56,14 @@ public class LevelManager : MonoBehaviour
     private bool raySpeedUpIsOn = false; //米诺地尔酊
     private bool rotationalSpeedDownIsOn = false; //非那雄胺片
 
+    public bool isEnd = false;
+
     public void TurnOnDebuffResistance() { 
     
         if(!debuffResistanceIsOn)
         {
-                debuffResistanceIsOn = true;
-        uimanager.FloatingText("减少所有减益效果的影响");
+            debuffResistanceIsOn = true;
+            uimanager.FloatingText("减少所有减益效果的影响");
         }
 
         //uimanager.
@@ -82,7 +84,7 @@ public class LevelManager : MonoBehaviour
         {
             raySpeedUpIsOn = true;
 
-            raySpeed *= 1.3f;
+            raySpeed += 2;
             rootsController.SetBaseValue(rotationalSpeed, raySpeed);
             //uimanager.
         }
@@ -93,7 +95,7 @@ public class LevelManager : MonoBehaviour
         if (!rotationalSpeedDownIsOn)
         {
             rotationalSpeedDownIsOn = true;
-            rotationalSpeed *= 0.7f;
+            rotationalSpeed -= 2;
             rootsController.SetBaseValue(rotationalSpeed, raySpeed);
         }
         //uimanager.
@@ -134,22 +136,23 @@ public class LevelManager : MonoBehaviour
                 StartCoroutine(HideFollicle(hideList));
                 break;
             case SleepState.StayUpLate:
-   
-                for (int i = 0; i < follicleList.Count; i++)
-                {
-                    if (i % 3 == 0)
-                    {
-                        hideList.Add(follicleList[i]);
-                    }
-                }
+
+                //for (int i = 0; i < follicleList.Count; i++)
+                //{
+                //    if (i % 3 == 0)
+                //    {
+                //        hideList.Add(follicleList[i]);
+                //    }
+                //}
+                rotationalSpeed += 1;
 
                 StartCoroutine(HideFollicle(hideList));
                 break;
             case SleepState.SleepEarly:
-                excitationInterval -= 0.2f;
+                excitationRate += 1;
                 break;
             case SleepState.Happy:
-                excitationInterval -= 0.1f;
+                raySpeed += 2;
                 break;
             default:
                 break;
@@ -217,6 +220,10 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        if (isEnd)
+        {
+            return;
+        }
         ActiveFollicle();
         TriggerMsg();
 
@@ -294,7 +301,7 @@ public class LevelManager : MonoBehaviour
     private void HandleBuffer(BuffEvent e){
         int count = e.count;
 
-        if (excitationRateUpIsOn)
+        if (debuffResistanceIsOn)
         {
             count = count - 1;
         }
@@ -343,6 +350,7 @@ public class LevelManager : MonoBehaviour
                     GameManager.GetInstance.SetLevelScore(GameManager.GetInstance.GetLevelScore() - 1);
                 }
                 uimanager.PerformLeftHandAnim();
+                //AudioManager.instance.PlaySoundEffectByName("Hair_Grab");
                 break;
 
             case BuffType.R_RegionalAlopecia:
@@ -355,6 +363,7 @@ public class LevelManager : MonoBehaviour
                 }
                 //print("r tuofa");
                 uimanager.PerformRightHandAnim();
+                //AudioManager.instance.PlaySoundEffectByName("Hair_Grab");
                 break;
 
         }
@@ -367,14 +376,17 @@ public class LevelManager : MonoBehaviour
             case 0:
                 uimanager.PushWeChat(msgString);
                 uimanager.PerformBaomuEffect();
+                AudioManager.instance.PlaySoundEffectByName("Message_Wechat");
                 break;
             case 1:
                 uimanager.PushDialogueLeft(msgString);
                 uimanager.PerformBaomuEffect();
+                AudioManager.instance.PlaySoundEffectByName("Message_Notfication");
                 break;
             case 2:
                 uimanager.PushDialogueRight(msgString);
                 uimanager.PerformBaomuEffect();
+                AudioManager.instance.PlaySoundEffectByName("Message_Notfication");
                 break;
         }
     }

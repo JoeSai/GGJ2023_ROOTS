@@ -56,6 +56,7 @@ public class RootsController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            AudioManager.instance.PlaySoundEffectByName("Shoot");
             state = RootsState.Busying;
 
             startPosition = startPoint.position;

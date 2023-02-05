@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e56267c2d2ff640a6432591cfdd5e1, type: 3}
   m_Name: Level3Cfg
   m_EditorClassIdentifier: 
-  rotationalSpeed: 10
+  rotationalSpeed: 4
   excitationRate: 2
-  excitationDuration: 2
-  raySpeed: 10
-  triggerMsgInterval: 5
+  excitationDuration: 4
+  raySpeed: 7
+  triggerMsgInterval: 15

@@ -98,5 +98,9 @@ public class RootsRay : MonoBehaviour
         {
             hitFollicle.GetComponent<Follicle>().SetState(FollicleState.Actived);
         }
+        else
+        {
+            AudioManager.instance.PlaySoundEffectByName("Shoot_Miss");
+        }
     }
 }

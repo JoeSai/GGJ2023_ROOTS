@@ -15,16 +15,16 @@ MonoBehaviour:
   bossMsgData:
     msgList:
     - boss
-    probability: 40
+    probability: 30
     buffType: 0
   artserMsgData:
     msgList:
-    - art
+    - art1
     probability: 15
     buffType: 1
   artserMsgData2:
     msgList:
-    - 
+    - art2
     probability: 15
     buffType: 2
   designerMsgData:

@@ -15,9 +15,9 @@ MonoBehaviour:
   events:
   - bufferName: "\u7B56\u5212gank"
     buffTpye: 0
-    count: 2
+    count: 3
     arena: 0
-    duration: 5
+    duration: 9
   - bufferName: "\u7F8E\u672Fgank"
     buffTpye: 1
     count: 2

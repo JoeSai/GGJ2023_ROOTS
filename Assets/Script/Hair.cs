@@ -10,6 +10,9 @@ public class Hair : MonoBehaviour
     void Start()
     {
         hairAnimator = GetComponent<Animator>();
+        AudioManager.instance.PlaySoundEffectByName("Hair_Groth");
+
+        
     }
 
     // Update is called once per frame
@@ -43,7 +46,7 @@ public class Hair : MonoBehaviour
     {
         isDown = true;
         hairAnimator.SetTrigger("down");
-
+        AudioManager.instance.PlaySoundEffectByName("Hair_Lost");
 
     }
 }

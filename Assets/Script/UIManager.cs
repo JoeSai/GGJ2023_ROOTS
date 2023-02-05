@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject follicles;
     [SerializeField] private GameObject baomuImgList;
 
-    private float timer = 60;
+    public float timer = 60;
     private bool isEnd = false;
 
     public void FloatingText(string msg)
@@ -78,6 +78,7 @@ public class UIManager : MonoBehaviour
         if(timer <= 0)
         {
             isEnd = true;
+            LevelManager.GetInstance.isEnd = true;
             follicles.SetActive(false);
             shopPanel.SetActive(true);
         }
