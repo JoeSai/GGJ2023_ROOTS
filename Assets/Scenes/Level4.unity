@@ -4383,7 +4383,7 @@ MonoBehaviour:
   follicleList: []
   uimanager: {fileID: 1393273026}
   levelCfg: {fileID: 11400000, guid: b5f68005af360124382cb2a8b36fc5b4, type: 2}
-  msgCfg: {fileID: 11400000, guid: b0c8ba6469e5ce44aaaa64df49b1112c, type: 2}
+  msgCfg: {fileID: 11400000, guid: 456dfb12c318b6b46b993a2f97895045, type: 2}
   buffCfg: {fileID: 11400000, guid: 997a8067207c98946bea720998bf8546, type: 2}
   rootsController: {fileID: 1378435396}
   rotationalSpeed: 0

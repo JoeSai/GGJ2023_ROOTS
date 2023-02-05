@@ -1586,11 +1586,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 20804076222822762, guid: bab2e7cbe9ba69941bc759764e1aaa1f, type: 3}
   m_PrefabInstance: {fileID: 583416666}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &644833960 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3459680509390420996, guid: f0b2a5f5447a8004185fc45815851fa2, type: 3}
-  m_PrefabInstance: {fileID: 743671244}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3693,7 +3688,7 @@ MonoBehaviour:
   rightHandAnim: {fileID: 471992876}
   scoreText: {fileID: 971840833}
   timeText: {fileID: 2102333469}
-  shopPanel: {fileID: 644833960}
+  shopPanel: {fileID: 1415970433}
   eventPanel: {fileID: 1415970433}
   follicles: {fileID: 40793463}
   baomuImgList: {fileID: 0}
