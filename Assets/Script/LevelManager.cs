@@ -408,6 +408,11 @@ public class LevelManager : MonoBehaviour
                 AudioManager.instance.PlaySoundEffectByName("Message_Notfication");
                 break;
             case 2:
+                uimanager.PushDialogueLeft(msgString);
+                uimanager.PerformBaomuEffect();
+                AudioManager.instance.PlaySoundEffectByName("Message_Notfication");
+                break;
+            case 3:
                 uimanager.PushDialogueRight(msgString);
                 uimanager.PerformBaomuEffect();
                 AudioManager.instance.PlaySoundEffectByName("Message_Notfication");
