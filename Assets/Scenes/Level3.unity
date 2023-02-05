@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5348,6 +5348,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1858312588}
+    - target: {fileID: 5897896529933631331, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
+      propertyPath: m_Text
+      value: "\u4E0D\u52A0\u73ED\uFF0C\u7237\u8981\u4E0B\u73ED"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897896530207716139, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
+      propertyPath: m_Text
+      value: "\u5DE5\u4F5C\u4E2D\uFF0C\u603B\u6709\u4E00\u4E9B\u5DE5\u4F5C\u662F\u5F53\u5929\u505A\u4E0D\u5B8C\u7684\uFF0C\u4F60\u6253\u7B97"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897896530362383058, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
+      propertyPath: m_Text
+      value: "\u5509\uFF0C\u4ECA\u65E5\u4E8B\u4ECA\u65E5\u6BD5\u5427"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbc945ea69b8b1945aa09aa7c1e273b5, type: 3}
 --- !u!1001 &7539674795058637419
