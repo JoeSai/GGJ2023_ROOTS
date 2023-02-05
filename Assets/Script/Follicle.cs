@@ -64,7 +64,7 @@ public class Follicle : MonoBehaviour
                 break;
             case FollicleState.Active:
               
-                image.color = new Color(Color.blue.r, Color.blue.g, Color.blue.b, 0.5f);
+                image.color = new Color(Color.green.r, Color.green.g, Color.green.b, 0.5f);
                 this.state = FollicleState.Active;
                 break;
             case FollicleState.Actived:
